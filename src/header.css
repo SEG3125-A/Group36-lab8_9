@@ -21,6 +21,6 @@
     left:50%;
     transform: translateX(-50%);
     text-align: left;
-    background-image:url("/public/jumbotron.jpg");
+    background-image:url("/public/images/jumbotron.jpg");
     background-position: center;
 }

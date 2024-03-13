@@ -14,17 +14,17 @@ const Music=()=> {
         </div>
         <div className="music-box">
           <div className="music-logo">
-            <img src=""></img>
+            <img src="images/jumbotron.jpg"></img>
           </div>
           <div className="music-controller">
             <div className="music-details">
               <i class="bi bi-arrow-left-circle-fill"></i>
-                <spam className="music-title">Title</spam>
-                <i class="bi bi-arrow-right-circle-fill"></i>
+              <spam className="music-title">Title</spam>
+              <i class="bi bi-arrow-right-circle-fill"></i>
                 <br/>
-                <spam className="music-author">Author</spam>
+              <spam className="music-author">Author</spam>
             </div>
-            <ReactAudioPlayer src="my_audio_file.ogg" autoPlay controls/>
+            <ReactAudioPlayer src="audio/2ms" autoPlay controls/>
             
           </div>
         </div>
