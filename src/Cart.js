@@ -1,10 +1,15 @@
-
+import $ from 'jquery';
+import "./cart.css";
+import "./variables.css";
+import { Link } from 'react-scroll';
 
 const Cart=()=> {
     return (
-      <div className="App">
-        
-      </div>
+      <>
+        <section className="cart">
+          
+        </section>
+      </>
     );
 }
   

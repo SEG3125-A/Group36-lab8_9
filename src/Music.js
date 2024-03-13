@@ -24,7 +24,7 @@ const Music=()=> {
                 <br/>
               <spam className="music-author">Author</spam>
             </div>
-            <ReactAudioPlayer src="audio/2ms" autoPlay controls/>
+            <ReactAudioPlayer src="audios/2MS.mp3" autoPlay controls/>
             
           </div>
         </div>
