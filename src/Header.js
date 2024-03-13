@@ -11,7 +11,7 @@ const Header=()=> {
 
         {/* That is the nav bar */}
         <nav className="navbar navbar-expand-sm  navbar-light">
-          <div className="container-fluid">
+          <div className="container-fluid logo">
             <a className="navbar-brand" href="#">
             <img src={logo} alt="Avatar Logo" style={{width:'40px'}} class="rounded-pill"/> 
             </a>

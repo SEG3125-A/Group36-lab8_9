@@ -36,3 +36,35 @@
     transform: rotate(360deg);
   }
 }
+.music, .creation, .cart, .gallery{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  margin-top: 20px;
+  
+}
+.intro{
+  position: relative;
+  border: 0px solid black;
+  width: 200px;
+  text-align: center;
+}
+.intro::after{
+  content: "";
+  position: absolute;
+  width: 60px;
+  height: 0px;
+  border: 1px solid black;
+  right: -100px;
+  top:50%;
+}
+.intro::before{
+  content: "";
+  position: absolute;
+  width: 60px;
+  height: 0px;
+  border: 1px solid black;
+  left: -100px;
+  top:50%;
+}

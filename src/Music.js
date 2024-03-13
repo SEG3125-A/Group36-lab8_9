@@ -8,7 +8,7 @@ import ReactAudioPlayer from 'react-audio-player';
 const Music=()=> {
     return (
       <section className="music">
-        <div className="music-intro">
+        <div className="intro">
           <h2>Music</h2>
           <p>Let the music guide you through an unforgettable journey</p>
         </div>

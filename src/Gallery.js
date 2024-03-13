@@ -7,7 +7,10 @@ const Gallery=()=> {
     return (
       <>
         <section className="gallery">
-          
+          <div className="intro">
+            <h2>Gallery</h2>
+            <p>Explore your dream</p>
+          </div>
         </section>
       </>
     );
