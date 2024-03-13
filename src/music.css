@@ -3,6 +3,11 @@
     align-items: center;
     justify-content: space-between;
     margin-top: 20px;
+    border: 0px solid black;
+    border-radius:6px;
+    background-color: rgba(0, 0, 0, 0.266);
+    padding:15px;
+    color:white;
 }
 .music-logo{
     margin-right: 20px;
@@ -10,7 +15,12 @@
 .music-logo img{
     width: 80px;
     height: 80px;
-    border: 1px solid black;
+    border: 0px solid black;
     border-radius: 50%;
 }
-
+.music-details{
+    display: flex;
+    justify-content:space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
