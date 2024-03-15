@@ -25,9 +25,9 @@ const Music=()=> {
       src:"audios/Alex Jean - Wrote You A Letter.mp3"
     },
     {
-      title:"2MS",
+      title:"Brilliant mind",
       artist:"Blanco",
-      src:"audios/2MS.mp3"
+      src:"audios/Blanco - Brilliant Mind (Official Music Video).mp3"
     },
 
     {
@@ -91,7 +91,7 @@ const Music=()=> {
               </div>
               <i class="bi bi-arrow-right-circle-fill" onClick={()=>changeSong("next")}></i>
             </div>
-            <ReactAudioPlayer className="audio-player" src="" autoPlay controls/>
+            <ReactAudioPlayer className="audio-player" src="" autoPlay={true} controls onEnded={()=>changeSong("next")}/>
             
           </div>
         </div>
