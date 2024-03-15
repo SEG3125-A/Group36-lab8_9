@@ -1,0 +1,10 @@
+/* gallery.css */
+.gallery {
+  text-align: center;
+}
+
+
+
+.gallery-item {
+  width: 100%; /* Adjust the width to occupy the full width of the container */
+}

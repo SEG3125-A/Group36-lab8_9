@@ -1,0 +1,28 @@
+/* GalleryItem.css */
+.grid-container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* Adjust to accommodate three images */
+  column-gap: 20px; /* Adjust the gap between columns */
+}
+
+.image-container {
+  border: 1px solid #ccc;
+  padding: 10px;
+  box-sizing: border-box;
+}
+
+.gallery-image {
+  width: 100%; /* Make the image take 100% of the image container width */
+  height: 100%; /* Adjust height to make all images the same size */
+  object-fit: cover; /* Maintain aspect ratio and cover the container */
+  align-items: center;
+}
+
+.description {
+  margin-top: 10px;
+}
+
+.box {
+  border: 1px solid black; /* Add border around each image + description */
+  padding: 10px; /* Add padding */
+}
