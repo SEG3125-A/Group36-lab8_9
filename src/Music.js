@@ -91,7 +91,7 @@ const Music=()=> {
               </div>
               <i class="bi bi-arrow-right-circle-fill" onClick={()=>changeSong("next")}></i>
             </div>
-            <ReactAudioPlayer className="audio-player"src="" autoPlay controls/>
+            <ReactAudioPlayer className="audio-player" src="" autoPlay controls/>
             
           </div>
         </div>
