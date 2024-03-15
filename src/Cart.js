@@ -7,7 +7,9 @@ const Cart=()=> {
     return (
       <>
         <section className="cart">
-          
+          <div className="intro">
+            <h2>Cart</h2>
+          </div>
         </section>
       </>
     );

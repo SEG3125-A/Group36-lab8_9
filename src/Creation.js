@@ -7,7 +7,10 @@ const Creation=()=> {
     return (
       <>
         <section className="creation">
-        
+          <div className="intro">
+            <h2>Creation</h2>
+            <p>Share your story. Create a post and inspire others.</p>
+          </div>
         </section>
       </>
     );
