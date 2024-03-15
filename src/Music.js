@@ -75,7 +75,7 @@ const Music=()=> {
       <section className="music">
         <div className="intro">
           <h2>Music</h2>
-          <p>Let the music guide you through an unforgettable journey</p>
+          <p>Let the music guide your journey</p>
         </div>
         <div className="music-box">
           <div className="music-logo">

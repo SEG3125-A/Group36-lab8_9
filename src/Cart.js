@@ -1,10 +1,9 @@
 import $ from 'jquery';
 import "./cart.css";
 import "./variables.css";
+import CartItem from "./CartItem";
 import { Link } from 'react-scroll';
 import { Breadcrumb } from 'react-bootstrap';
-import {BsChevronRight} from 'react-icons/bs';
-import {FaTrashAlt} from "react-icons/fa";
 import { FaCartShopping } from "react-icons/fa6";
 import { MdPayment } from "react-icons/md";
 import { GiConfirmed } from "react-icons/gi";
@@ -27,36 +26,18 @@ const Cart=()=> {
           
           <div className="container checkout">
             <div className="shopping-cart">
-              <h1>My items</h1>
-              <div className='cart-item py-3'>
-                <div className='cart-item-img'> <img src="images/jumbotron.jpg" alt=""/></div>
-                <div className='cart-item-info'>
-                  <div className='cart-item-details'>
-                    <p>Name</p>
-                    <p>Author</p>
-                    <p>Price</p>
-                  </div>
-                  <FaTrashAlt />
-                  
-                </div>
-              </div>
-              <div className='cart-item py-3'>
-                <div className='cart-item-img'> <img src="images/jumbotron.jpg" alt=""/></div>
-                <div className='cart-item-info'>
-                  <div className='cart-item-details'>
-                    <p>Name</p>
-                    <p>Author</p>
-                    <p>Price</p>
-                  </div>
-                  <FaTrashAlt />
-                  
-                </div>
-              </div>
+              <h2>My items</h2>
+              <CartItem image={"images/jumbotron.jpg"} name={"tony"} author={"james"} price={"25$"}/>
+              <CartItem image={"images/jumbotron.jpg"} name={"tony"} author={"james"} price={"25$"}/>
+              <CartItem image={"images/jumbotron.jpg"} name={"tony"} author={"james"} price={"25$"}/>
+              <CartItem image={"images/jumbotron.jpg"} name={"tony"} author={"james"} price={"25$"}/> 
             </div>
             <div className="payment">
-
+              <h2>Payment</h2>
             </div>
             <div className="final-order">
+              <h2>Finish order</h2>
+              
 
             </div>
             

@@ -24,8 +24,11 @@
 }
 
 .checkout{
-    border: 1px solid black;
+    border: 0px solid black;
     margin-top: 20px;
+}
+.checkout h2{
+    margin-bottom: 50px;
 }
 .checkout>*{
     width: auto;

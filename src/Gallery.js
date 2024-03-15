@@ -1,4 +1,5 @@
 import React from 'react';
+import "./gallery.css";
 import GalleryItem from './GalleryItem'; // Import GalleryItem component
 
 const Gallery = () => {
