@@ -1,26 +1,19 @@
 // GalleryItem.js
 import React from 'react';
 import PropTypes from 'prop-types';
-import "./GalleryItem.css";
+import "./gallery.css"
 
-const GalleryItem = ({ imageSrc1, imageSrc2, description1, description2, description3 }) => {
+const GalleryItem = ({ imageSrc1, imageSrc2, description, artist, title }) => {
   return (
-    <div className="gallery-item" class = "grid-container">
-      <div className="image-container" class = "grid-item">
-        <img src={'images/pic1.jpg'} alt="Gallery Item 1" className="gallery-image" />
-        <p className="description">{description1}</p>
+    <div className="gallery-item">
+      <div className="image-container">
+        <img src={imageSrc1} alt="Gallery Item" />
       </div>
-
-      <div className="image-container" class = "grid-item">
-        <img src={'images/pic2.jpg'} alt="Gallery Item 2" className="gallery-image" />
-        <p className="description">{description2}</p>
+      <div className="image-details">
+        <span className="image-title"><b>Title: </b> {title}</span><br/>
+        <span className="image-artist"><b>Artist: </b> {artist}</span><br/>
+        <span className="image-description"><b>Description: </b>{description}</span>
       </div>
-
-      <div className="image-container" class = "grid-item">
-        <img src={'images/pic3.jpg'} alt="Gallery Item 3" className="gallery-image" />
-        <p className="description">{description3}</p>
-      </div>
-
     </div>
   );
 };
