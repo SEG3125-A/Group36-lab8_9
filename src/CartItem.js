@@ -2,10 +2,10 @@ import "./cart.css";
 import "./variables.css";
 import {FaTrashAlt} from "react-icons/fa";
 
-const CartItem=({image,name,author,price})=>{
+const CartItem=({image,name,author,price,order})=>{
     return(
         <>
-        <div className='cart-item py-3'>
+          <div className='cart-item py-1'>
                 <div className='cart-item-img'> <img src={image} alt=""/></div>
                 <div className='cart-item-info'>
                   <div className='cart-item-details'>
@@ -13,9 +13,9 @@ const CartItem=({image,name,author,price})=>{
                     <p>Author: {author}</p>
                     <p>Price {price}</p>
                   </div>
-                  <FaTrashAlt />
+                  {order && <FaTrashAlt />}
                 </div>
-              </div>
+          </div>
         </>
     );
 }

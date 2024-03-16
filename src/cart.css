@@ -23,6 +23,7 @@
     background-color: #333638;
 }
 
+
 .checkout{
     border: 0px solid black;
     margin-top: 20px;
@@ -35,6 +36,20 @@
     align-items: center;
     border: 0px solid black;
     text-align: left;
+}
+.checkout button{
+    background-color:#ebebebfe ;
+    color:black;
+    border-color: #ebebeb2c;
+}
+.checkout button:hover{
+    background-color:#ebebeb2f ;
+}
+.inactive{
+    display: none;
+}
+.active{
+    display: block;
 }
 .cart-item{
     display: flex;
