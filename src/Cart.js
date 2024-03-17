@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import allPiecesOfArt from "./gallery.json";
+import {userCart} from "./Gallery";
 import $ from 'jquery';
 import "./cart.css";
 import "./variables.css";
@@ -65,7 +66,7 @@ const Cart=()=> {
             <div className={`shopping-cart ${activeSection === "cart"? "active":"inactive"} `}>
               <h2>My items</h2>
 
-              {allPiecesOfArt.map((item,index)=>(
+              {userCart.length>0 &&  userCart.map((item,index)=>(
                 <CartItem image={item.imageSrc} name={item.title} author={item.artist} price={item.price} order={true}/>
               ))}
 
@@ -127,8 +128,8 @@ const Cart=()=> {
             <div className={`finalOrder ${activeSection === "finalOrder"? "active":"inactive"} `}>
               <h2>Finish order</h2>
 
-              {allPiecesOfArt.map((item,index)=>(
-                <CartItem image={item.imageSrc1} name={item.title} author={item.artist} price={item.price} order={false}/>
+              {userCart.length>0 && userCart.map((item,index)=>(
+                <CartItem image={item.imageSrc} name={item.title} author={item.artist} price={item.price} order={false}/>
               ))}
               
               <span>Full Name: {formData.fullName}</span><br/>

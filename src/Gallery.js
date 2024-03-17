@@ -3,7 +3,14 @@ import "./gallery.css";
 import GalleryItem from './GalleryItem'; // Import GalleryItem component
 import allPiecesOfArt from './gallery.json';
 
-
+//create a button in each GalleryItem to add the paint to the userCart 
+export let userCart=[{
+  "imageSrc": "images/pic1.jpg",
+  "title": "Cookie Monster Wave",
+  "artist": "Johnathan Brown",
+  "description": "This is a re-make of 'The Great Wave'",
+  "price": 1075
+},];
 const Gallery = () => {
   return (
     <section className="gallery">
@@ -12,7 +19,7 @@ const Gallery = () => {
         <p>Explore the beauty</p>
       </div>
       <div className="gallery-container">
-        {allPiecesOfArt.map((item, index) => (
+        {allPiecesOfArt.length>0 && allPiecesOfArt.map((item, index) => (
           <GalleryItem
             key={index}
             imageSrc={item.imageSrc} // Pass imageSrc1 to GalleryItem
