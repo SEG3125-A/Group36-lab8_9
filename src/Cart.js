@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import allPiecesOfArt from "./gallery.json";
 import $ from 'jquery';
 import "./cart.css";
 import "./variables.css";
@@ -63,11 +64,11 @@ const Cart=()=> {
             
             <div className={`shopping-cart ${activeSection === "cart"? "active":"inactive"} `}>
               <h2>My items</h2>
-              <CartItem image={"images/jumbotron.jpg"} name={"tony"} author={"james"} price={"25$"} order={true}/>
-              <CartItem image={"images/jumbotron.jpg"} name={"tony"} author={"james"} price={"25$"} order={true}/>
-              <CartItem image={"images/jumbotron.jpg"} name={"tony"} author={"james"} price={"25$"} order={true}/>
-              <CartItem image={"images/jumbotron.jpg"} name={"tony"} author={"james"} price={"25$"} order={true}/> 
-              
+
+              {allPiecesOfArt.map((item,index)=>(
+                <CartItem image={item.imageSrc} name={item.title} author={item.artist} price={item.price} order={true}/>
+              ))}
+
               <button type="button" className="btn mt-4" style={{backgroundColor:"#ebebebfe"}} onClick={()=>{scrollToSection("payment")}}>Add payment</button>
             </div>
             
@@ -125,10 +126,10 @@ const Cart=()=> {
 
             <div className={`finalOrder ${activeSection === "finalOrder"? "active":"inactive"} `}>
               <h2>Finish order</h2>
-              <CartItem image={"images/jumbotron.jpg"} name={"tony"} author={"james"} price={"25$"} order={false}/>
-              <CartItem image={"images/jumbotron.jpg"} name={"tony"} author={"james"} price={"25$"} order={false}/>
-              <CartItem image={"images/jumbotron.jpg"} name={"tony"} author={"james"} price={"25$"} order={false}/>
-              <CartItem image={"images/jumbotron.jpg"} name={"tony"} author={"james"} price={"25$"} order={false}/>
+
+              {allPiecesOfArt.map((item,index)=>(
+                <CartItem image={item.imageSrc1} name={item.title} author={item.artist} price={item.price} order={false}/>
+              ))}
               
               <span>Full Name: {formData.fullName}</span><br/>
               <span>Emaill address: {formData.emailAddress}</span><br/>

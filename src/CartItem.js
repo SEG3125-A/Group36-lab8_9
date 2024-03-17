@@ -11,7 +11,7 @@ const CartItem=({image,name,author,price,order})=>{
                   <div className='cart-item-details'>
                     <p>Name: {name}</p>
                     <p>Author: {author}</p>
-                    <p>Price {price}</p>
+                    <p>Price: {price}$</p>
                   </div>
                   {order && <FaTrashAlt />}
                 </div>

@@ -3,24 +3,24 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import "./gallery.css"
 
-const GalleryItem = ({ imageSrc1, imageSrc2, description, artist, title }) => {
+const GalleryItem = ({ imageSrc, description, artist, title,price }) => {
   return (
     <div className="gallery-item">
       <div className="image-container">
-        <img src={imageSrc1} alt="Gallery Item" />
+        <img src={imageSrc} alt="Gallery Item" />
       </div>
       <div className="image-details">
         <span className="image-title"><b>Title: </b> {title}</span><br/>
         <span className="image-artist"><b>Artist: </b> {artist}</span><br/>
-        <span className="image-description"><b>Description: </b>{description}</span>
+        <span className="image-description"><b>Description: </b>{description}</span><br/>
+        <span className="image-price"><b>Price: </b>{price}$</span>
       </div>
     </div>
   );
 };
 
 GalleryItem.propTypes = {
-  imageSrc1: PropTypes.string.isRequired,
-  imageSrc2: PropTypes.string.isRequired,
+  imageSrc: PropTypes.string.isRequired,
   description1: PropTypes.string.isRequired,
   description2: PropTypes.string.isRequired,
 };
