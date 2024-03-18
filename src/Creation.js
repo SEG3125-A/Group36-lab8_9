@@ -26,7 +26,7 @@ const Creation=()=> {
     }));
   }
   const handleFileChange=(e)=>{
-    const file=e.target[0].files[0];
+    const file=e.target.files[0];
     setArtwork(prevState=>({
       ...prevState,
       imageFile:file,
@@ -34,12 +34,32 @@ const Creation=()=> {
     }));
   }
 
-  const handleSubmit=(e)=>{
+  const handleSubmit=async (e)=>{
     e.preventDefault();
 
-    //upload the image file
-    let formData=new FormData();
-    formData.append("imageFile",artwork.imageFile);
+    
+    try{
+        //upload the image file
+      let formData=new FormData();
+      formData.append("imageFile",artwork.imageFile);
+
+      const response = fetch("api/data", {
+        method: 'POST',
+        body: formData,
+        headers: {
+          'Content-Type': 'application/json'
+        }
+      });
+
+      if(response.ok){
+        console.log("artwork added successfully");
+
+      }else{
+        console.error("Failed to add artWork")
+      }
+    }catch(error){
+      console.error('Error:', error);
+    }
 
   }
 
