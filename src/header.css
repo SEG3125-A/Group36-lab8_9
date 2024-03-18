@@ -1,13 +1,24 @@
 nav{
     border: 0px solid black;
-    
+    display: flex;
+    align-items: center;
+    padding-left: calc(10vw);
+    padding-right: calc(10vw);
+}
+.container-fluid.logo{
+    border: 0px solid blue;
+    max-width: 100px;
+    margin-left: calc(10vw);
 }
 .container-fluid.menu{
-    border: 0px solid black;
+    border: 0px solid red;
     display:flex;
-    justify-content:flex-end;
     font-size: 25px;
-    margin-right: 0px;
+}
+.container-fluid.menu>ul{
+    display:flex;
+    margin-left: auto;
+    margin-right: calc(10vw);
 }
 .nav-item:hover{
     cursor: pointer;
