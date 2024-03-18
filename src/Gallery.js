@@ -22,11 +22,7 @@ const Gallery = () => {
         {allPiecesOfArt.length>0 && allPiecesOfArt.map((item, index) => (
           <GalleryItem
             key={index}
-            imageSrc={item.imageSrc} // Pass imageSrc1 to GalleryItem
-            description={item.description}
-            artist={item.artist}
-            title={item.title}
-            price={item.price}
+            artwork={item}
           />
         ))}
       </div>

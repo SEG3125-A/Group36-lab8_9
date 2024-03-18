@@ -4,17 +4,17 @@ import PropTypes from 'prop-types';
 import "./gallery.css";
 import Button from 'react-bootstrap/Button';
 
-const GalleryItem = ({ imageSrc, description, artist, title,price }) => {
+const GalleryItem = ({ artwork }) => {
   return (
     <div className="gallery-item">
       <div className="image-container">
-        <img src={imageSrc} alt="Gallery Item" />
+        <img src={artwork.imageSrc} alt="Gallery Item" />
       </div>
       <div className="image-details">
-        <span className="image-title"><b>Title: </b> {title}</span><br/>
-        <span className="image-artist"><b>Artist: </b> {artist}</span><br/>
-        <span className="image-description"><b>Description: </b>{description}</span><br/>
-        <span className="image-price"><b>Price: </b>{price}$</span>
+        <span className="image-title"><b>Title: </b> {artwork.title}</span><br/>
+        <span className="image-artist"><b>Artist: </b> {artwork.artist}</span><br/>
+        <span className="image-description"><b>Description: </b>{artwork.description}</span><br/>
+        <span className="image-price"><b>Price: </b>{artwork.price}$</span>
         
       </div>
       <Button variant="primary">Add to cart</Button>{' '}

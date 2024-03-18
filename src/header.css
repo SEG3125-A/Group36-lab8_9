@@ -13,12 +13,15 @@ nav{
 .container-fluid.menu{
     border: 0px solid red;
     display:flex;
-    font-size: 25px;
+    font-size: 20px;
 }
 .container-fluid.menu>ul{
     display:flex;
     margin-left: auto;
     margin-right: calc(10vw);
+}
+.container-fluid.menu>ul>li{
+    padding-left: 20px;
 }
 .nav-item:hover{
     cursor: pointer;

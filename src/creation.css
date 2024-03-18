@@ -1,0 +1,12 @@
+.creation{
+    align-items: flex-start;
+    padding-left: 40px;
+}
+.creation h2{
+    text-align: left;
+}
+Form{
+    border: 0px solid black;
+    text-align: left;
+    margin-top: 25px;
+}
