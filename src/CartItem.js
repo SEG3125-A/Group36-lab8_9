@@ -9,11 +9,11 @@ const CartItem=({item,order})=>{
     return(
         <>
           <div className='cart-item py-1'>
-                <div className='cart-item-img'> <img src={item.image} alt=""/></div>
+                <div className='cart-item-img'> <img src={item.imageSrc} alt=""/></div>
                 <div className='cart-item-info'>
                   <div className='cart-item-details'>
-                    <p>Name: {item.name}</p>
-                    <p>Author: {item.author}</p>
+                    <p>Name: {item.title}</p>
+                    <p>Author: {item.artist}</p>
                     <p>Price: {item.price}$</p>
                     <id>id:{item.id}</id>
                   </div>

@@ -10,21 +10,22 @@ import Cart from './Cart';
 export const CartContext= createContext();
 export const RemoveItemContext= createContext();
 const App=()=> {
-  const [id,setId]=useState(0);
+  const [id,setId]=useState(1);
 
   //create a button in each GalleryItem to add the paint to the userCart 
   const [userCart, setUserCart] = useState([]);
 
   //add a new artwork to the cart
   const addToCart = (data) => {
-    setId(id+1);
     const modifiedData={...data,"id":id}
+    console.log(modifiedData);
     setUserCart(prevUserCart=>[...prevUserCart, modifiedData]);
-    console.log(userCart);
+    setId(id+1);
   }
 
   //return the cart array
   const getUserCart = () => {
+    console.log(userCart);
     return userCart;
   }
 

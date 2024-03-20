@@ -9,8 +9,6 @@ import { Breadcrumb } from 'react-bootstrap';
 import { FaCartShopping } from "react-icons/fa6";
 import { MdPayment } from "react-icons/md";
 import { GiConfirmed } from "react-icons/gi";
-
-import Cards from 'react-credit-cards';
 import 'react-credit-cards/es/styles-compiled.css'
 
 const Cart=({getUserCart,removeFromCart})=> {
