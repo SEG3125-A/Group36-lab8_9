@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import allPiecesOfArt from "./gallery.json";
+import Button from 'react-bootstrap/Button';
+import Modal from 'react-bootstrap/Modal';
 import $ from 'jquery';
 import "./cart.css";
 import "./variables.css";
@@ -9,9 +11,36 @@ import { Breadcrumb } from 'react-bootstrap';
 import { FaCartShopping } from "react-icons/fa6";
 import { MdPayment } from "react-icons/md";
 import { GiConfirmed } from "react-icons/gi";
-import 'react-credit-cards/es/styles-compiled.css'
+
+const MyVerticallyCenteredModal=(props)=> {
+  return (
+    <Modal
+      {...props}
+      size="lg"
+      aria-labelledby="contained-modal-title-vcenter"
+      centered
+    >
+      <Modal.Header closeButton>
+        <Modal.Title id="contained-modal-title-vcenter">
+        Order confirmed
+        </Modal.Title>
+      </Modal.Header>
+      <Modal.Body>
+        <h4>Thanks for shopping with us</h4>
+        <p>
+          Your order is on it's way! Feel free to add your comments when it will be delivered
+        </p>
+      </Modal.Body>
+      <Modal.Footer>
+        <Button onClick={props.onHide}>Close</Button>
+      </Modal.Footer>
+    </Modal>
+  );
+}
+
 
 const Cart=({getUserCart,removeFromCart})=> {
+  const [modalShow, setModalShow] = React.useState(false);
 
   let userCart=getUserCart();
   const [activeSection,setActiveSection]=useState("cart");
@@ -68,8 +97,9 @@ const Cart=({getUserCart,removeFromCart})=> {
               {userCart.length>0 &&  userCart.map((item,index)=>(
                 <CartItem item={item} order={true}/>
               ))}
-
-              <button type="button" className="btn mt-4" style={{backgroundColor:"#ebebebfe"}} onClick={()=>{scrollToSection("payment")}}>Add payment</button>
+              <Button variant="primary" className="btn mt-4" style={{backgroundColor:"#ebebebfe"}} onClick={()=>{scrollToSection("payment")}}>
+                  Add payment
+              </Button>
             </div>
             
             
@@ -119,7 +149,9 @@ const Cart=({getUserCart,removeFromCart})=> {
                     <input type="checkbox" className="form-check-input" id="exampleCheck1"/>
                     <label className="form-check-label" for="exampleCheck1">Check me out</label>
                   </div>
-                  <button type="button" className="btn mt-4" onClick={()=>{scrollToSection("finalOrder");handleSubmit()}} >Review and finish</button>
+                  <Button variant="primary" className="btn mt-4" onClick={() => {scrollToSection("finalOrder");handleSubmit()}}>
+                  Review and finish
+                  </Button>
               </form>
             </div>
 
@@ -136,35 +168,16 @@ const Cart=({getUserCart,removeFromCart})=> {
               <span>PhoneNumber: {formData.phoneNumber}</span><br/>
               <span>Card number {formData.cardNumber}</span><br/>
 
-              <button type="button" className="btn mt-4">Place order</button>
               {/*<!-- Button trigger modal -->*/}
+              <Button variant="primary" onClick={() => setModalShow(true)}>
+                  Place Order
+              </Button>
 
-            </div>
+              <MyVerticallyCenteredModal
+                  show={modalShow}
+                  onHide={() => setModalShow(false)}
+              />
 
-            {/*<!-- Button trigger modal -->*/}
-            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
-              Launch demo modal
-            </button>
-
-            {/*<!-- Modal -->*/}
-            <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-              <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                  <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                      <span aria-hidden="true">&times;</span>
-                    </button>
-                  </div>
-                  <div class="modal-body">
-                    ...
-                  </div>
-                  <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary">Save changes</button>
-                  </div>
-                </div>
-              </div>
             </div>
             
           </div>

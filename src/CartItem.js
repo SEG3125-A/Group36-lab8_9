@@ -15,7 +15,6 @@ const CartItem=({item,order})=>{
                     <p>Name: {item.title}</p>
                     <p>Author: {item.artist}</p>
                     <p>Price: {item.price}$</p>
-                    <id>id:{item.id}</id>
                   </div>
                   {order && <FaTrashAlt onClick={()=>removeFromCart(item.id)} />}
                 </div>
