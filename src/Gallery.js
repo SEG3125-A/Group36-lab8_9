@@ -1,19 +1,14 @@
-import React from 'react';
+import React, {useState} from 'react';
 import "./gallery.css";
 import GalleryItem from './GalleryItem'; // Import GalleryItem component
 import allPiecesOfArt from './gallery.json';
 
-//create a button in each GalleryItem to add the paint to the userCart 
-export let userCart=[{
-  "imageSrc": "images/pic1.jpg",
-  "title": "Cookie Monster Wave",
-  "artist": "Johnathan Brown",
-  "description": "This is a re-make of 'The Great Wave'",
-  "price": 1075
-},];
-const Gallery = () => {
+
+const Gallery = ({addToCart}) => {
+
   return (
-    <section className="gallery">
+    <>
+      <section className="gallery">
       <div className="intro">
         <h2>Gallery</h2>
         <p>Explore the beauty</p>
@@ -26,8 +21,11 @@ const Gallery = () => {
           />
         ))}
       </div>
-    </section>
+     </section>
+    </>
   );
 };
+
+
 
 export default Gallery;

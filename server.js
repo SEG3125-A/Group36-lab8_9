@@ -42,7 +42,7 @@ app.post('/api/data', (req, res) => {
     artworks.push(artwork);
 
     // Save updated survey results to the analytics file
-    fs.writeFile('gallery.json', JSON.stringify(artworks), (writeErr) => {
+    fs.writeFile(__dirname + '/src/gallery.json', JSON.stringify(artworks), (writeErr) => {
       if (writeErr) {
         console.error('Error writing to JSON file:', writeErr);
         res.status(500).send('Internal Server Error');

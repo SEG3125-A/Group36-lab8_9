@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import allPiecesOfArt from "./gallery.json";
-import {userCart} from "./Gallery";
 import $ from 'jquery';
 import "./cart.css";
 import "./variables.css";
@@ -14,7 +13,9 @@ import { GiConfirmed } from "react-icons/gi";
 import Cards from 'react-credit-cards';
 import 'react-credit-cards/es/styles-compiled.css'
 
-const Cart=()=> {
+const Cart=({getUserCart})=> {
+
+  let userCart=getUserCart();
   const [activeSection,setActiveSection]=useState("cart");
   const[formData,setFormData]=useState({
     fullName:"",

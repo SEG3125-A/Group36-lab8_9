@@ -1,10 +1,12 @@
 // GalleryItem.js
-import React from 'react';
+import React,{createContext,useContext} from 'react';
 import PropTypes from 'prop-types';
 import "./gallery.css";
 import Button from 'react-bootstrap/Button';
+import { CartContext } from './App';
 
 const GalleryItem = ({ artwork }) => {
+  const addToCart=useContext(CartContext);
   return (
     <div className="gallery-item">
       <div className="image-container">
@@ -17,7 +19,7 @@ const GalleryItem = ({ artwork }) => {
         <span className="image-price"><b>Price: </b>{artwork.price}$</span>
         
       </div>
-      <Button variant="primary">Add to cart</Button>{' '}
+      <Button variant="primary" onClick={()=>addToCart(artwork)}>Add to cart</Button>{' '}
     </div>
     
   );
