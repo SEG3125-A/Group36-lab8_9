@@ -19,7 +19,7 @@ const GalleryItem = ({ artwork }) => {
         <span className="image-price"><b>Price: </b>{artwork.price}$</span>
         
       </div>
-      <Button variant="primary" onClick={()=>addToCart(artwork)}>Add to cart</Button>{' '}
+      <Button variant="primary" onClick={()=>addToCart(artwork)}>Add to cart</Button>
     </div>
     
   );

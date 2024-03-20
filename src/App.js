@@ -8,7 +8,9 @@ import Creation from './Creation';
 import Cart from './Cart';
 
 export const CartContext= createContext();
+export const RemoveItemContext= createContext();
 const App=()=> {
+  const [id,setId]=useState(1);
 
   //create a button in each GalleryItem to add the paint to the userCart 
   const [userCart, setUserCart] = useState([
@@ -17,18 +19,27 @@ const App=()=> {
       "title": "Cookie Monster Wave",
       "artist": "Johnathan Brown",
       "description": "This is a re-make of 'The Great Wave'",
-      "price": 1075
+      "price": 1075,
+      "id":id
     }
   ]);
 
+  //add a new artwork to the cart
   const addToCart = (data) => {
-    setUserCart([...userCart, data]);
+    setId(id+1);
+    const modifiedData={...data,"id":id}
+    setUserCart(prevUserCart=>[...prevUserCart, modifiedData]);
     console.log(userCart);
   }
 
-  //this is problematic
+  //return the cart array
   const getUserCart = () => {
     return userCart;
+  }
+
+  //remoce an artwork from the cart
+  const removeFromCart=(id)=>{
+    setUserCart(userCart.filter((item)=>item.id!=id));
   }
 
   return (
@@ -36,10 +47,12 @@ const App=()=> {
       <Header/>
       <Music/>
       <CartContext.Provider value={addToCart}>
-        <Gallery addToCart={addToCart}/>
+        <Gallery />
       </CartContext.Provider>
       <Creation/>
-      <Cart getUserCart={getUserCart}/>
+      <RemoveItemContext.Provider value={removeFromCart}>
+        <Cart getUserCart={getUserCart} removeFromCart={removeFromCart}/>
+      </RemoveItemContext.Provider>
       
     </div>
   );

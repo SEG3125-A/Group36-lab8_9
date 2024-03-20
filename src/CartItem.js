@@ -1,19 +1,23 @@
+import React,{useContext} from "react";
 import "./cart.css";
 import "./variables.css";
 import {FaTrashAlt} from "react-icons/fa";
+import { RemoveItemContext } from "./App";
 
-const CartItem=({image,name,author,price,order})=>{
+const CartItem=({item,order})=>{
+  const removeFromCart=useContext(RemoveItemContext)
     return(
         <>
           <div className='cart-item py-1'>
-                <div className='cart-item-img'> <img src={image} alt=""/></div>
+                <div className='cart-item-img'> <img src={item.image} alt=""/></div>
                 <div className='cart-item-info'>
                   <div className='cart-item-details'>
-                    <p>Name: {name}</p>
-                    <p>Author: {author}</p>
-                    <p>Price: {price}$</p>
+                    <p>Name: {item.name}</p>
+                    <p>Author: {item.author}</p>
+                    <p>Price: {item.price}$</p>
+                    <id>id:{item.id}</id>
                   </div>
-                  {order && <FaTrashAlt />}
+                  {order && <FaTrashAlt onClick={()=>removeFromCart(item.id)} />}
                 </div>
           </div>
         </>

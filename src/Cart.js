@@ -13,7 +13,7 @@ import { GiConfirmed } from "react-icons/gi";
 import Cards from 'react-credit-cards';
 import 'react-credit-cards/es/styles-compiled.css'
 
-const Cart=({getUserCart})=> {
+const Cart=({getUserCart,removeFromCart})=> {
 
   let userCart=getUserCart();
   const [activeSection,setActiveSection]=useState("cart");
@@ -68,7 +68,7 @@ const Cart=({getUserCart})=> {
               <h2>My items</h2>
 
               {userCart.length>0 &&  userCart.map((item,index)=>(
-                <CartItem image={item.imageSrc} name={item.title} author={item.artist} price={item.price} order={true}/>
+                <CartItem item={item} order={true}/>
               ))}
 
               <button type="button" className="btn mt-4" style={{backgroundColor:"#ebebebfe"}} onClick={()=>{scrollToSection("payment")}}>Add payment</button>
@@ -129,8 +129,8 @@ const Cart=({getUserCart})=> {
             <div className={`finalOrder ${activeSection === "finalOrder"? "active":"inactive"} `}>
               <h2>Finish order</h2>
 
-              {userCart.length>0 && userCart.map((item,index)=>(
-                <CartItem image={item.imageSrc} name={item.title} author={item.artist} price={item.price} order={false}/>
+              {userCart.length>0 && userCart.map((item)=>(
+                <CartItem item={item} order={false}/>
               ))}
               
               <span>Full Name: {formData.fullName}</span><br/>

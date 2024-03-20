@@ -4,7 +4,7 @@ import GalleryItem from './GalleryItem'; // Import GalleryItem component
 import allPiecesOfArt from './gallery.json';
 
 
-const Gallery = ({addToCart}) => {
+const Gallery = () => {
 
   return (
     <>
@@ -14,9 +14,9 @@ const Gallery = ({addToCart}) => {
         <p>Explore the beauty</p>
       </div>
       <div className="gallery-container">
-        {allPiecesOfArt.length>0 && allPiecesOfArt.map((item, index) => (
+        {allPiecesOfArt.length>0 && allPiecesOfArt.map((item) => (
           <GalleryItem
-            key={index}
+            key={item.id}
             artwork={item}
           />
         ))}
