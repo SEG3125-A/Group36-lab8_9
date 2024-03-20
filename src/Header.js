@@ -19,7 +19,7 @@ const Header=()=> {
           <div className="container-fluid menu">
             <ul className="navbar-nav">
               <li className="nav-item">
-                <Link to="music" spy={true} smooth={true} offset={0} duration={500} delay={0}>
+                <Link  to="music" spy={true} smooth={true} offset={0} duration={500} delay={0}>
                 <a className="nav-link active">Music</a>
                 </Link>
               </li>
@@ -41,11 +41,7 @@ const Header=()=> {
             </ul>
           </div>
         </nav>
-        {/* That is the nav bar */}
-        <div className="mt-4 p-5 bg-primary text-white rounded jumbotron">
-          <h1>Artivisio</h1>
-          <p>Explore the beauty captured by talented photographers from around the world.</p>
-        </div>
+  
       </section>
     </>
   );

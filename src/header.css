@@ -1,10 +1,18 @@
+.header{
+    position: sticky;
+    top:0;
+    z-index: 1000;
+    margin-bottom: 10px;
+}
 nav{
     border: 0px solid black;
     display: flex;
     align-items: center;
     padding-left: calc(10vw);
     padding-right: calc(10vw);
+    background-color: rgba(255, 255, 255, 0.192);
 }
+
 .container-fluid.logo{
     border: 0px solid blue;
     max-width: 100px;
@@ -22,7 +30,9 @@ nav{
 }
 .container-fluid.menu>ul>li{
     padding-left: 20px;
+    font-weight: 1000;
 }
+
 .nav-item:hover{
     cursor: pointer;
 }
@@ -38,4 +48,5 @@ nav{
     text-align: left;
     background-image:url("/public/images/jumbotron.jpg");
     background-position: center;
+    font-weight: 1000;
 }

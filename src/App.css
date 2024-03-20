@@ -1,5 +1,20 @@
+@font-face {
+  font-family: 'papyrus';
+  src: url(/public/fonts/papyrus.TTF);
+}
+@font-face {
+  font-family:'Ink free';
+  src: url(/public/fonts/Inkfree.ttf);
+}
+@font-face {
+  font-family:'Comic Sans MS';
+  src: url(/public/fonts/LDFComicSans.ttf);
+}
+
 .App {
   text-align: center;
+  font-family:'Ink free','papyrus',  'Comic Sans MS', sans-serif;
+  font-weight: 500;
 }
 
 .App-logo {
@@ -44,7 +59,7 @@
   margin: 40px 0px;
   padding: 10px 0px;
   border: 0px solid black;
-  
+
 }
 .intro{
   position: relative;
@@ -52,6 +67,10 @@
   width: 200px;
   text-align: center;
 }
+.intro>h1,.intro>h2{
+  font-weight:1000 ;
+}
+
 .intro::after{
   content: "";
   position: absolute;

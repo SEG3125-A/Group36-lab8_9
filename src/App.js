@@ -6,6 +6,7 @@ import Music from './Music';
 import Gallery from './Gallery';
 import Creation from './Creation';
 import Cart from './Cart';
+import Jumbotron from './Jumbotton';
 
 export const CartContext= createContext();
 export const RemoveItemContext= createContext();
@@ -37,6 +38,7 @@ const App=()=> {
   return (
     <div className="App">
       <Header/>
+      <Jumbotron/>
       <Music/>
       <CartContext.Provider value={addToCart}>
         <Gallery />
