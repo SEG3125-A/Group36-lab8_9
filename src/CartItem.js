@@ -16,7 +16,7 @@ const CartItem=({item,order})=>{
                     <p>Author: {item.artist}</p>
                     <p>Price: {item.price}$</p>
                   </div>
-                  {order && <FaTrashAlt onClick={()=>removeFromCart(item.id)} />}
+                  {order && <FaTrashAlt onClick={()=>removeFromCart(item.id)} style={{cursor:"pointer"}} />}
                 </div>
           </div>
         </>

@@ -91,7 +91,7 @@ const Creation=()=> {
               <Form.Label>Price</Form.Label>
               <Form.Control type="number" placeholder="Enter the price" name="price" value={artwork.price} onChange={handleInputChange} />
             </Form.Group>
-            <Button variant="primary" type="submit" onClick={handleSubmit}>
+            <Button variant="dark" type="submit" onClick={handleSubmit}>
                 Submit
             </Button>
           </Form>

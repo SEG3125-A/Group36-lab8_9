@@ -1,7 +1,7 @@
 import $ from 'jquery';
 import "./header.css";
 import "./variables.css"
-import logo from "./logo.svg";
+import logo from "./favicon.ico";
 import { Link } from 'react-scroll';
 
 const Header=()=> {
@@ -13,7 +13,7 @@ const Header=()=> {
         <nav className="navbar navbar-expand-sm  navbar-light">
           <div className="container-fluid logo">
             <a className="navbar-brand" href="#">
-            <img src={logo} alt="Avatar Logo" style={{width:'40px'}} class="rounded-pill"/> 
+            <img src={logo} alt="Avatar Logo" style={{width:'50px'}} class=""/> 
             </a>
           </div>
           <div className="container-fluid menu">

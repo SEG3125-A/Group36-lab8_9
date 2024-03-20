@@ -97,7 +97,7 @@ const Cart=({getUserCart,removeFromCart})=> {
               {userCart.length>0 &&  userCart.map((item,index)=>(
                 <CartItem item={item} order={true}/>
               ))}
-              <Button variant="primary" className="btn mt-4" style={{backgroundColor:"#ebebebfe"}} onClick={()=>{scrollToSection("payment")}}>
+              <Button variant="dark" type="button" className="btn mt-4" onClick={()=>{scrollToSection("payment")}}>
                   Add payment
               </Button>
             </div>
@@ -149,7 +149,7 @@ const Cart=({getUserCart,removeFromCart})=> {
                     <input type="checkbox" className="form-check-input" id="exampleCheck1"/>
                     <label className="form-check-label" for="exampleCheck1">Check me out</label>
                   </div>
-                  <Button variant="primary" className="btn mt-4" onClick={() => {scrollToSection("finalOrder");handleSubmit()}}>
+                  <Button variant="dark" className="btn mt-4" type="button" onClick={() => {scrollToSection("finalOrder");handleSubmit()}}>
                   Review and finish
                   </Button>
               </form>
@@ -169,7 +169,7 @@ const Cart=({getUserCart,removeFromCart})=> {
               <span>Card number {formData.cardNumber}</span><br/>
 
               {/*<!-- Button trigger modal -->*/}
-              <Button variant="primary" onClick={() => setModalShow(true)}>
+              <Button variant="dark" className="btn mt-4" type="button" onClick={() => setModalShow(true)}>
                   Place Order
               </Button>
 
