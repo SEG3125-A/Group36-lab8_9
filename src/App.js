@@ -10,19 +10,10 @@ import Cart from './Cart';
 export const CartContext= createContext();
 export const RemoveItemContext= createContext();
 const App=()=> {
-  const [id,setId]=useState(1);
+  const [id,setId]=useState(0);
 
   //create a button in each GalleryItem to add the paint to the userCart 
-  const [userCart, setUserCart] = useState([
-    {
-      "imageSrc": "images/pic1.jpg",
-      "title": "Cookie Monster Wave",
-      "artist": "Johnathan Brown",
-      "description": "This is a re-make of 'The Great Wave'",
-      "price": 1075,
-      "id":id
-    }
-  ]);
+  const [userCart, setUserCart] = useState([]);
 
   //add a new artwork to the cart
   const addToCart = (data) => {
