@@ -61,6 +61,9 @@ const Cart=({getUserCart,removeFromCart})=> {
     setActiveSection(section);
   }
 
+  const getColor=(section)=>{
+    return section===activeSection ? ["#333638","white"]:["#ebebebfe","#333638"];
+  }
   const handleSubmit=(e)=>{
     //e.preventDefault();
 
@@ -82,11 +85,11 @@ const Cart=({getUserCart,removeFromCart})=> {
           </div>
           
           <Breadcrumb >
-              <Breadcrumb.Item onClick={()=>scrollToSection("cart")} ><FaCartShopping /></Breadcrumb.Item>
-              <div style={{width:"80px", border:"1px solid #ebebebfe", margin:""}}></div>
-              <Breadcrumb.Item onClick={()=>scrollToSection("payment")} ><MdPayment /></Breadcrumb.Item>
+            <Breadcrumb.Item onClick={()=>scrollToSection("cart")} style={{backgroundColor:getColor("cart")[0]}} ><FaCartShopping color={getColor("cart")[1]} /></Breadcrumb.Item>
               <div style={{width:"80px", border:"1px solid #ebebebfe"}}></div>
-              <Breadcrumb.Item onClick={()=>scrollToSection("finalOrder")}  ><GiConfirmed /></Breadcrumb.Item>
+              <Breadcrumb.Item onClick={()=>scrollToSection("payment")} style={{backgroundColor:getColor("payment")[0]}}><MdPayment color={getColor("payment")[1]}/></Breadcrumb.Item>
+              <div style={{width:"80px", border:"1px solid #ebebebfe"}}></div>
+              <Breadcrumb.Item onClick={()=>scrollToSection("finalOrder")} style={{backgroundColor:getColor("finalOrder")[0]}}  ><GiConfirmed color={getColor("finalOrder")[1]} /></Breadcrumb.Item>
           </Breadcrumb>
           
           <div className="container checkout">
