@@ -1,6 +1,7 @@
-import React, { useState } from 'react';
+import React, { useState,useRef } from 'react';
 import allPiecesOfArt from "./gallery.json";
 import Button from 'react-bootstrap/Button';
+import Form from 'react-bootstrap/Form';
 import Modal from 'react-bootstrap/Modal';
 import $ from 'jquery';
 import "./cart.css";
@@ -32,7 +33,7 @@ const MyVerticallyCenteredModal=(props)=> {
         </p>
       </Modal.Body>
       <Modal.Footer>
-        <Button onClick={props.onHide}>Close</Button>
+        <Button variant="dark" onClick={props.onHide}>Close</Button>
       </Modal.Footer>
     </Modal>
   );
@@ -40,42 +41,170 @@ const MyVerticallyCenteredModal=(props)=> {
 
 
 const Cart=({getUserCart,removeFromCart})=> {
-  const [modalShow, setModalShow] = React.useState(false);
+  const [modalShow, setModalShow] = useState(false);
 
+  //store all possible error
+  const [error,setError]=useState({
+    fullName:true,
+    email:true,
+    phone:true,
+    nameOnCard:true,
+    cardNumber:true,
+    expiryDate:true,
+    cvc:true,
+    submit:true,
+  });
+
+  //load the shopping cart
   let userCart=getUserCart();
+
+  //update the activated section to be rendered
   const [activeSection,setActiveSection]=useState("cart");
+
   const[formData,setFormData]=useState({
     fullName:"",
-    emailAddress:"",
-    phoneNumber:"",
+    email:"",
+    phone:"",
     cardNumber:"",
     nameOnCard:"",
     cvc:"",
     expiryDate:"",
-
   });
-  let {fullName,emailAddress,phoneNumber,cardNumber,nameOnCard,cvc,expiryDate}=formData;
 
+
+  //hold references from some elements
+  const formRef=useRef(null);
+  const fullNameRef = useRef(null);
+  const emailRef = useRef(null);
+  const phoneRef = useRef(null);
+  const cardNumberRef = useRef(null);
+  const nameOnCardRef = useRef(null);
+  const cvcRef = useRef(null);
+  const expiryDateRef = useRef(null);
+
+  //handle where to scroll the screen depending on the option chosen
   const scrollToSection=(section)=>{
     $(`.${section}`)[0].scrollIntoView({ behavior: "smooth" });
     setActiveSection(section);
   }
 
+  //change the background color and the color of the breadcrumb item which is clicked
+  //getColor[0] is for the background of the breadcumb item and getColor[1] is for the color of the cart
   const getColor=(section)=>{
     return section===activeSection ? ["#333638","white"]:["#ebebebfe","#333638"];
   }
-  const handleSubmit=(e)=>{
-    //e.preventDefault();
 
-    setFormData({
-      ...formData,
-      fullName:$("#fullName").val(),
-      emailAddress:$("#emailAddress").val(),
-      phoneNumber:$("#phoneNumber").val(),
-      cardNumber:$("#cardNumber").val(),
-    });
-    console.log(fullName+" "+emailAddress);
+  //event when the input field changes
+  const handleInputChange=(e)=>{
+    const {name,value}=e.target;
+    setError((prevData)=>({
+      ...prevData,
+      [name]:checkInputValidity(name,value),
+    }));
+  };
+
+  // check the validity of the input with a specific name and value based on a certain pattern
+  const checkInputValidity = (name, value) => {
+    switch (name) {
+      case "phone":
+        console.log("phone");
+        if (!value.trim().match(/^(\d{3}[-\s]?\d{3}[-\s]?\d{4})$/) || value === "") {
+          return true;
+        }
+        return false;
+      case "email":
+        if (!value.trim().match(/^[\w-]+(\.[\w-]+)*@([\w-]+\.)+[a-zA-Z]{2,7}$/)) {
+          return true;
+        }
+        return false;
+      case "cardNumber":
+        if (!value.trim().match(/^(\d{4}[ ]?\d{4}[ ]?\d{4}[ ]?\d{4})$/)) {
+          return true;
+        }
+        return false;
+      case "cvc":
+        if (!value.trim().match(/^(\d{3})$/)) {
+          return true;
+        }
+        return false;
+      case "fullName":
+        if (value.trim() === "") {
+          return true;
+        }
+        return false;
+      case "nameOnCard":
+        if (value.trim() === "") {
+          return true;
+        }
+        return false;
+      case "expiryDate":
+        if (value.trim() === "") {
+          return true;
+        }
+        return false;
+      default:
+        return false;
+    }
+  };
+
+
+  //check if there is no error in the field and store all form's data
+  const handleSubmit=(e)=>{
+    // Check if any field in error state is true except "submit"
+    if(Object.entries(error).some(([key, value]) => key !== "submit" && value)){
+      //set the error submission to true
+      setError((prevData)=>({
+        ...prevData,
+        submit:true,
+      }));
+    }else{
+      //set the error submission to false
+      setError((prevData)=>({
+        ...prevData,
+        submit:false,
+      }));
+
+      //save data in variables
+      setFormData({
+        fullName: fullNameRef.current.value,
+        email: emailRef.current.value,
+        phone: phoneRef.current.value,
+        cardNumber: cardNumberRef.current.value,
+        nameOnCard: nameOnCardRef.current.value,
+        cvc: cvcRef.current.value,
+        expiryDate: expiryDateRef.current.value,
+      });
+      
+      console.log(formData.fullName);
+      scrollToSection("finalOrder")
+    }
   }
+  
+
+  //reset the whole form
+  const resetForm = () => {
+    //reset the inputs
+    formRef.current.reset();
+    setError({
+      fullName: true,
+      email: true,
+      phone: true,
+      nameOnCard: true,
+      cardNumber: true,
+      expiryDate: true,
+      cvc: true,
+      submit: true,
+    });
+    setFormData({
+      fullName: "",
+      email: "",
+      phone: "",
+      cardNumber: "",
+      nameOnCard: "",
+      cvc: "",
+      expiryDate: "",
+    });
+  };
   
     return (
       <>
@@ -108,54 +237,75 @@ const Cart=({getUserCart,removeFromCart})=> {
             
             <div className={`payment ${activeSection === "payment"? "active":"inactive"} `}>
               <h2>Payment</h2>
-              <form>
-                  <div className="form-group">
-                    <label for="inputFullName">Full Name</label>
-                    <input type="text" className="form-control" id="fullName" placeholder="Enter ful name"/>
-                  </div>
-                  
-                  <div className="form-group">
-                    <label for="inputEmail">Email address</label>
-                    <input type="email" className="form-control" id="emailAddress" aria-describedby="emailHelp" placeholder="Enter email"/>
-                    <small id="emailHelp" className="form-text text-muted">We'll never share your email with anyone else.</small>
-                  </div>
-
-                  <div className="form-group">
-                    <label for="phoneNumber">Phone number</label>
-                    <input type="number" className="form-control" id="phoneNumber" placeholder="Phone number" pattern="[0-9]{10}" maxLength="10"/>
-                  </div>
-                  
-                  
-                  <div className="form-group">
-                    <label for="nameOnCard">Name on Card</label>
-                    <input type="text" className="form-control" id="nameOnCard" placeholder="Name on card"/>
-                  </div>
-
-                  <div className="form-group">
-                    <label for="cardNumber">Card number</label>
-                    <input type="text" className="form-control" id="cardNumber" placeholder="Enter Card Number" pattern="[0-9]{10}" maxLength="16"/>
-                  </div>
-
-                  <div className="form-group">
-                    <label for="expiryDate">Expiry date</label>
-                    <input type="month" className="form-control" id="expiryDate" placeholder="MM/YY"/>
-                  </div>
-
-                  <div className="form-group">
-                    <label for="cvc">CVC</label>
-                    <input type="number" className="form-control" id="cvc" placeholder="Enter CVC" pattern="[0-9]{3}" maxLength="3"/>
-                  </div>
 
 
+              <Form ref={formRef}>
+              <Form.Group className="mb-3" controlId="formBasicFullname">
+                  <Form.Label>Full name</Form.Label>
+                  <Form.Control type="text" ref={fullNameRef} name="fullName" onChange={handleInputChange} placeholder="Enter full name" />
+                  { error.fullName &&<Form.Text style={{color:"red"}}>
+                    ! Empty fields
+                  </Form.Text>}
+                </Form.Group>
 
-                  <div className="form-check">
-                    <input type="checkbox" className="form-check-input" id="exampleCheck1"/>
-                    <label className="form-check-label" for="exampleCheck1">Check me out</label>
-                  </div>
-                  <Button variant="dark" className="btn mt-4" type="button" onClick={() => {scrollToSection("finalOrder");handleSubmit()}}>
+                <Form.Group className="mb-3" controlId="formBasicEmail">
+                  <Form.Label>Email address</Form.Label>
+                  <Form.Control type="email" ref={emailRef} name="email" onChange={handleInputChange} placeholder="email@email.com" />
+                  {error.email && <Form.Text style={{color:"red"}}>
+                    ! Wrong email format
+                  </Form.Text>}
+                </Form.Group>
+
+                <Form.Group className="mb-3" controlId="formBasicPhoneNumber">
+                  <Form.Label>Phone number</Form.Label>
+                  <Form.Control type="number"  ref={phoneRef} name="phone" onChange={handleInputChange} placeholder="--- --- ----" />
+                  {error.phone &&
+                    <Form.Text style={{color:"red"}}>
+                      ! Phone number format be 10 digits (XXX XXX XXXX)
+                    </Form.Text>}
+                </Form.Group>
+                
+
+                <Form.Group className="mb-3" controlId="formBasicNameOnCard">
+                  <Form.Label>Name on Card</Form.Label>
+                  <Form.Control type="text" ref={nameOnCardRef} name="nameOnCard" onChange={handleInputChange} placeholder="Enter name on card" />
+                  { error.nameOnCard &&<Form.Text style={{color:"red"}}>
+                    ! Empty field
+                  </Form.Text>}
+                </Form.Group>
+
+                <Form.Group className="mb-3" controlId="formBasicCardNumber">
+                  <Form.Label>Card number</Form.Label>
+                  <Form.Control type="number" ref={cardNumberRef} name="cardNumber" onChange={handleInputChange} placeholder="---- ---- ---- ----" />
+                  {error.cardNumber && <Form.Text style={{color:"red"}}>
+                    ! Card number should be 16 digits (XXXX XXXX XXXX XXXX)
+                  </Form.Text>}
+                </Form.Group>
+
+                <Form.Group className="mb-3" controlId="formBasicDate">
+                  <Form.Label>Expiry date</Form.Label>
+                  <Form.Control type="month" ref={expiryDateRef} name="expiryDate" onChange={handleInputChange}  />
+                  { error.expiryDate &&<Form.Text style={{color:"red"}}>
+                    ! Empty field
+                  </Form.Text>}
+                </Form.Group>
+
+                <Form.Group className="mb-3" controlId="formBasicCvc">
+                  <Form.Label>CVC</Form.Label>
+                  <Form.Control type="number" ref={cvcRef} name="cvc" onChange={handleInputChange} placeholder="Enter the 3-dgits CVC" />
+                  { error.cvc &&<Form.Text style={{color:"red"}}>
+                    ! CVC should be 3 digits (XXX)
+                  </Form.Text>}
+                </Form.Group>
+
+                <Button variant="dark" className="btn mt-4" type="button" name="submit" onClick={handleSubmit}>
                   Review and finish
-                  </Button>
-              </form>
+                </Button>
+                { error.submit &&<Form.Text style={{color:"red"}}>
+                    ! Error, Check all inputs
+                  </Form.Text>}
+              </Form>
+
             </div>
 
 
@@ -167,12 +317,12 @@ const Cart=({getUserCart,removeFromCart})=> {
               ))}
               
               <span>Full Name: {formData.fullName}</span><br/>
-              <span>Emaill address: {formData.emailAddress}</span><br/>
-              <span>PhoneNumber: {formData.phoneNumber}</span><br/>
+              <span>Emaill address: {formData.email}</span><br/>
+              <span>PhoneNumber: {formData.phone}</span><br/>
               <span>Card number {formData.cardNumber}</span><br/>
 
               {/*<!-- Button trigger modal -->*/}
-              <Button variant="dark" className="btn mt-4" type="button" onClick={() => setModalShow(true)}>
+              <Button variant="dark" className="btn mt-4" type="button" onClick={() => {setModalShow(true);resetForm();}}>
                   Place Order
               </Button>
 
