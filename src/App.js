@@ -37,7 +37,7 @@ const App=()=> {
 
   return (
     <div className="App">
-      <Header/>
+      <Header itemInCart={userCart.length}/>
       <Jumbotron/>
       <Music/>
       <CartContext.Provider value={addToCart}>

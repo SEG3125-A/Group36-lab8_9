@@ -4,7 +4,7 @@ import "./variables.css"
 import logo from "./favicon.ico";
 import { Link } from 'react-scroll';
 
-const Header=()=> {
+const Header=({itemInCart})=> {
   return (
     <>
       <section className='header'>
@@ -35,7 +35,7 @@ const Header=()=> {
               </li>
               <li className="nav-item">
                 <Link to="cart" spy={true} smooth={true} offset={0} duration={500} delay={0}>
-                <a className="nav-link active">Cart</a>
+                <a className="nav-link active">Cart (<span>{itemInCart})</span></a>
                 </Link>
               </li>
             </ul>

@@ -40,6 +40,13 @@
   margin-right:10px;
   align-items: flex-end;
 }
+.cart-icon:hover,.comment-icon:hover{
+  transition: 0.3s;
+  transform: scale(1.2);
+}
+.cart-icon:active,.comment-icon:active{
+  color:#ebebebfe;
+}
 
 
 

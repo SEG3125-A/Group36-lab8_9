@@ -74,6 +74,14 @@
     flex: 0.85;
     text-align: left;
 }
+.trash-icon:hover{
+    transition: 0.3s;
+    transform: scale(1.2);
+}
+
+.trash-icon:active{
+    color:#ebebebfe;
+}
 
 
   

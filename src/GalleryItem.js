@@ -24,8 +24,8 @@ const GalleryItem = ({ artwork }) => {
           <span className="image-price"><b>Price: </b>{artwork.price}$</span>
         </div>
         <div className='image-icon'>
-          <FaCartShopping size={30} onClick={()=>addToCart(artwork)} style={{marginRight:"15px",cursor:"pointer"}}/>
-          <FaComments size={30} style={{cursor:"pointer"}}/>
+          <FaCartShopping className="cart-icon" size={30} onClick={()=>addToCart(artwork)} style={{marginRight:"15px",cursor:"pointer"}}/>
+          <FaComments className="comment-icon" size={30} style={{cursor:"pointer"}}/>
         </div>
       </div>
 
