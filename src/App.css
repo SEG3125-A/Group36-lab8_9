@@ -89,3 +89,17 @@
   left: -100px;
   top:50%;
 }
+
+/* Custom styles for the Google Translate Element container */
+#google_translate_element {
+  position: fixed;
+  bottom: 20px;
+  right: 0px;
+  background-color: #ebebebfe;
+  border: 2px solid #ccc;
+  border-radius: 5px;
+  padding: 10px;
+  font-family: Arial, sans-serif;
+  font-size: 14px;
+  z-index: 9999; /* Ensure it's above other elements */
+}

@@ -3,6 +3,7 @@ import "./header.css";
 import "./variables.css"
 import logo from "./favicon.ico";
 import { Link } from 'react-scroll';
+import TranslateComponent from './TranslateComponent';
 
 const Header=({itemInCart})=> {
   return (
@@ -18,6 +19,9 @@ const Header=({itemInCart})=> {
           </div>
           <div className="container-fluid menu">
             <ul className="navbar-nav">
+            <li className="nav-item">
+                <TranslateComponent />
+              </li>
               <li className="nav-item">
                 <Link  to="music" spy={true} smooth={true} offset={0} duration={500} delay={0}>
                 <a className="nav-link active">Music</a>
