@@ -6,8 +6,28 @@ import Button from 'react-bootstrap/Button';
 import { FaCartShopping } from "react-icons/fa6";
 import { FaComments } from "react-icons/fa";
 import { CartContext } from './App';
+import {useRef} from 'react';
+import { useState } from 'react';
+
+
+
+
+
 
 const GalleryItem = ({ artwork }) => {
+
+  const ref = useRef(null);
+  
+  const [version, setVersion] = useState([]);
+  
+  const handleInput = () => {
+    console.log(ref.current.value);
+    console.log(version);
+    setVersion([...version, ref.current.value]);
+  };
+
+
+
   const addToCart=useContext(CartContext);
   return (
     <div className="gallery-item">
@@ -28,11 +48,24 @@ const GalleryItem = ({ artwork }) => {
           <FaComments className="comment-icon" size={30} style={{cursor:"pointer"}}/>
         </div>
       </div>
-
+      <textarea
+        ref={ref}
+        placeholder={"Enter your comment"}
+        id="message"
+        name="message"
+      />
+      <br />
+      <button onClick = {handleInput}>
+        Submit
+      </button>
+      <ul>{version.map(com => <li>{com}</li>)}</ul>
+      
     </div>
     
   );
 };
+
+
 
 GalleryItem.propTypes = {
   imageSrc: PropTypes.string.isRequired,
